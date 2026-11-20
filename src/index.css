@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #090a0f;
+  --bg-surface: #12151f;
+  --bg-card: rgba(24, 28, 43, 0.75);
+  --border-color: rgba(35, 41, 61, 0.8);
+  --text-primary: #ffffff;
+  --text-muted: #8e9bb0;
+  --accent-cyan: #00f3ff;
+  --accent-blue: #0066ff;
+  --glass-border: rgba(0, 243, 255, 0.2);
+}
+
+.theme-light {
+  --bg-primary: #f0f4f8;
+  --bg-surface: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --border-color: rgba(200, 210, 225, 0.9);
+  --text-primary: #111827;
+  --text-muted: #4b5563;
+  --accent-cyan: #0077b6;
+  --accent-blue: #0052cc;
+  --glass-border: rgba(0, 119, 182, 0.25);
+}
+
+.theme-minimal {
+  --bg-primary: #000000;
+  --bg-surface: #0f0f0f;
+  --bg-card: rgba(20, 20, 20, 0.9);
+  --border-color: #333333;
+  --text-primary: #ffffff;
+  --text-muted: #888888;
+  --accent-cyan: #ffffff;
+  --accent-blue: #cccccc;
+  --glass-border: rgba(255, 255, 255, 0.3);
+}
+
+/* Glassmorphism styling inspired by Asphalt 9 HUD and REA card precision */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+}
+
+.glass-panel-glow {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 0 25px rgba(0, 243, 255, 0.12);
+}
+
+.theme-minimal .glass-panel-glow {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+}
+
+.theme-light .glass-panel-glow {
+  box-shadow: 0 4px 20px rgba(0, 82, 204, 0.08);
+}
+
+/* Custom cyber scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(9, 10, 15, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 243, 255, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00f3ff;
+}
+
+/* Map marker radar animation */
+.radar-ring {
+  border: 2px solid #00f3ff;
+  border-radius: 50%;
+  animation: radarPulse 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+@keyframes radarPulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+/* Nitro speed streaks */
+.nitro-active {
+  box-shadow: 0 0 35px #00f3ff, inset 0 0 20px #0066ff;
+  animation: nitroJitter 0.1s infinite alternate;
+}
+
+@keyframes nitroJitter {
+  0% { transform: translateY(-1px); }
+  100% { transform: translateY(1px); }
+}
+
+/* Prevent canvas selection issues */
+canvas {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
